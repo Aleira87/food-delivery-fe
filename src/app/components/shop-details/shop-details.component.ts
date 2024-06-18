@@ -1,3 +1,4 @@
+import { ShopsService } from './../../services/shops.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 
@@ -6,24 +7,29 @@ import { ActivatedRoute, RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet],
   templateUrl: './shop-details.component.html',
-  styleUrl: './shop-details.component.css'
+  styleUrl: './shop-details.component.css',
 })
-export class ShopDetailsComponent implements OnInit, OnDestroy{
-
+export class ShopDetailsComponent implements OnInit, OnDestroy {
   id!: number;
   private sub: any;
+  // ShopsService!: ShopsService;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private ShopsService: ShopsService
+  ) {}
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-       this.id = +params['id'];
-       // In a real app: dispatch action to load the details here.
+    this.sub = this.route.params.subscribe((params) => {
+      this.id = +params['id'];
+      // In a real app: dispatch action to load the details here.
+      this.ShopsService.getShopsById(this.id).subscribe((data) => {
+        console.log(data);
+      });
     });
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
-
 }
