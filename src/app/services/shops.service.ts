@@ -13,19 +13,19 @@ export class ShopsService {
   private searchSubject = new BehaviorSubject<string>('');
   search$ = this.searchSubject.asObservable();
 
-  //private url = 'https://server-node-igna.vercel.app/shops';
-  private url = 'http://localhost:3000';
+  private url = 'https://food-delivery-be-chi.vercel.app/shops';
+  // private url = 'http://localhost:3000';
 
   getShops(): Observable<Shop[]> {
-    return this.http.get<Shop[]>(this.url+"/shops");
-  }
-  
-  getShopsByCity(city: string): Observable<Shop[]> {
-    return this.http.get<Shop[]>(this.url+"/shops/"+city);
+    return this.http.get<Shop[]>(this.url + '/shops');
   }
 
-  addShop(shop: Shop){
-    return this.http.post<Shop>(this.url+"/shops", shop)
+  getShopsByCity(city: string): Observable<Shop[]> {
+    return this.http.get<Shop[]>(this.url + '/shops/' + city);
+  }
+
+  addShop(shop: Shop) {
+    return this.http.post<Shop>(this.url + '/shops', shop);
   }
 
   updateSearchTerm(term: string) {
