@@ -12,14 +12,14 @@ export class ProductsService {
   private searchSubject = new BehaviorSubject<string>('');
   search$ = this.searchSubject.asObservable();
 
-  private url = 'https://server-node-igna.vercel.app/products';
+  private url = 'https://food-delivery-be-chi.vercel.app/';
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.url);
+    return this.http.get<Product[]>(this.url + '/products');
   }
-  
+
   getProductsByCity(city: string): Observable<Product[]> {
-    return this.http.get<Product[]>(this.url+"/"+city);
+    return this.http.get<Product[]>(this.url + '/' + city);
   }
 
   updateSearchTerm(term: string) {
