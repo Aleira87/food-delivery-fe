@@ -13,8 +13,8 @@ export class ShopsService {
   private searchSubject = new BehaviorSubject<string>('');
   search$ = this.searchSubject.asObservable();
 
-  private url = 'https://food-delivery-be-chi.vercel.app';
-  // private url = 'http://localhost:3000';
+  //private url = 'https://food-delivery-be-chi.vercel.app';
+  private url = 'http://localhost:3000';
 
   getShops(): Observable<Shop[]> {
     return this.http.get<Shop[]>(this.url + '/shops');
@@ -24,7 +24,7 @@ export class ShopsService {
     return this.http.get<Shop[]>(this.url + '/shops/' + city);
   }
 
-  getShopsById(id: number): Observable<Shop> {
+  getShopById(id: number): Observable<Shop> {
     return this.http.get<Shop>(this.url + '/shops/' + id);
   }
 

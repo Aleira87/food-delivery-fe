@@ -1,6 +1,6 @@
-import { ShopsService } from './../../services/shops.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { ShopsService } from '../../services/shops.service';
 
 @Component({
   selector: 'app-shop-details',
@@ -12,18 +12,17 @@ import { ActivatedRoute, RouterOutlet } from '@angular/router';
 export class ShopDetailsComponent implements OnInit, OnDestroy {
   id!: number;
   private sub: any;
-  // ShopsService!: ShopsService;
 
   constructor(
     private route: ActivatedRoute,
-    private ShopsService: ShopsService
+    private shopsService: ShopsService
   ) {}
 
   ngOnInit() {
     this.sub = this.route.params.subscribe((params) => {
       this.id = +params['id'];
       // In a real app: dispatch action to load the details here.
-      this.ShopsService.getShopsById(this.id).subscribe((data) => {
+      this.shopsService.getShopById(this.id).subscribe((data) => {
         console.log(data);
       });
     });

@@ -31,7 +31,7 @@ export class ProductsComponent implements OnInit {
     // Carica i prodotti all'inizializzazione
     this.sub = this.route.params.subscribe((params) => {
       this.id = +params['id'];
-      this.productService.getProductById(this.id).subscribe((data) => {
+      this.productService.getProductsById(this.id).subscribe((data) => {
         this.products = data;
         this.filteredProducts = data;
       });

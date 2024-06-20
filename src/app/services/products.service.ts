@@ -9,21 +9,25 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class ProductsService {
   constructor(private http: HttpClient) {}
 
-  private searchSubject = new BehaviorSubject<string>('');
-  search$ = this.searchSubject.asObservable();
-
   // private url = 'https://food-delivery-be-chi.vercel.app/products';
   private url = 'http://localhost:3000/products';
 
+  private searchSubject = new BehaviorSubject<string>('');
+  search$ = this.searchSubject.asObservable();
+
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.url);
+  }
+
+  getProductsByShopID(id: number): Observable<Product[]> {
+    return this.http.get<Product[]>(this.url + '/' + id);
   }
 
   getProductsByCity(city: string): Observable<Product[]> {
     return this.http.get<Product[]>(this.url + '/' + city);
   }
 
-  getProductById(id: number): Observable<Product[]> {
+  getProductsById(id: number): Observable<Product[]> {
     return this.http.get<Product[]>(this.url + '/' + id);
   }
 
