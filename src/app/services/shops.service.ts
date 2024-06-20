@@ -24,8 +24,8 @@ export class ShopsService {
     return this.http.get<Shop[]>(this.url + '/shops/' + city);
   }
 
-  getShopById(id: number): Observable<Shop> {
-    return this.http.get<Shop>(this.url + '/shops/' + id);
+  getShopById(id: number): Observable<Shop[]> {
+    return this.http.get<Shop[]>(this.url + '/shops/' + id);
   }
 
   addShop(shop: Shop) {

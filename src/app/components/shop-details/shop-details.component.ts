@@ -11,6 +11,7 @@ import { ShopsService } from '../../services/shops.service';
 })
 export class ShopDetailsComponent implements OnInit, OnDestroy {
   id!: number;
+  test: any;
   private sub: any;
 
   constructor(
@@ -23,6 +24,7 @@ export class ShopDetailsComponent implements OnInit, OnDestroy {
       this.id = +params['id'];
       // In a real app: dispatch action to load the details here.
       this.shopsService.getShopById(this.id).subscribe((data) => {
+        this.test = data;
         console.log(data);
       });
     });
