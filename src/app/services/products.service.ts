@@ -19,16 +19,12 @@ export class ProductsService {
     return this.http.get<Product[]>(this.url);
   }
 
-  getProductsByShopID(id: number): Observable<Product[]> {
+  getProductsByShopId(id: number): Observable<Product[]> {
     return this.http.get<Product[]>(this.url + '/' + id);
   }
 
   getProductsByCity(city: string): Observable<Product[]> {
     return this.http.get<Product[]>(this.url + '/' + city);
-  }
-
-  getProductsById(id: number): Observable<Product[]> {
-    return this.http.get<Product[]>(this.url + '/' + id);
   }
 
   updateSearchTerm(term: string) {

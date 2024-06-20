@@ -23,15 +23,15 @@ export class ProductsComponent implements OnInit {
   sub: any;
 
   constructor(
-    private productService: ProductsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private productService: ProductsService
   ) {}
 
   ngOnInit() {
     // Carica i prodotti all'inizializzazione
     this.sub = this.route.params.subscribe((params) => {
       this.id = +params['id'];
-      this.productService.getProductsById(this.id).subscribe((data) => {
+      this.productService.getProductsByShopId(this.id).subscribe((data) => {
         this.products = data;
         this.filteredProducts = data;
       });
