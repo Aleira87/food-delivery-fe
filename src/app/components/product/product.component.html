@@ -1,4 +1,4 @@
-<a [routerLink]="['/product-details', product.id]">
+<!-- <a [routerLink]="['/product-details', product.id]">
   <mat-card class="example-card">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
@@ -25,4 +25,21 @@
       <button mat-button (click)="emitEvent()">OUTPUT</button>
     </mat-card-actions>
   </mat-card>
+</a> -->
+
+<a [routerLink]="['/product-details', product.id]">
+  <div class="card" style="width: 18rem">
+    <img
+      src="{{ product.img_url }}"
+      class="card-img-top"
+      alt="{{ product.name }}"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ product.name }}</h5>
+      <p class="card-text">{{ product.description }}</p>
+      <p class="card-text">{{ product.price }}€</p>
+      <p class="card-text">{{ product.availability }}</p>
+      <a href="#" class="btn btn-primary" (click)="emitEvent()">Go somewhere</a>
+    </div>
+  </div>
 </a>
