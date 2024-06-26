@@ -1,5 +1,5 @@
 <a [routerLink]="['/product-details', product.id]">
-<mat-card class="example-card">
+  <mat-card class="example-card">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title class="white">
@@ -9,16 +9,20 @@
         >{{ product.availability }}
       </mat-card-subtitle>
     </mat-card-header>
-    <!-- <img mat-card-image src={{product.img_url}} alt="Photo of a Shiba Inu"> -->
+    <img
+      mat-card-image
+      src="{{ product.img_url }}"
+      alt="Photo of a Shiba Inu"
+    />
     <mat-card-content>
       <p class="description white">
-        {{ product.description}}
+        {{ product.description }}
       </p>
     </mat-card-content>
     <mat-card-actions>
       <button mat-button>LIKE</button>
       <button mat-button>SHARE</button>
-      <button mat-button (click)="emitEvent()"> OUTPUT</button>
+      <button mat-button (click)="emitEvent()">OUTPUT</button>
     </mat-card-actions>
   </mat-card>
 </a>
