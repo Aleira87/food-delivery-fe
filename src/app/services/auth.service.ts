@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +9,7 @@ export class AuthService {
   private url = 'https://food-delivery-be-chi.vercel.app/';
 
   private tokenSubject: BehaviorSubject<string | null>;
-  public token$: any;
+  public token$: Observable<string | null>;
 
   constructor(private http: HttpClient) {
     const token = localStorage.getItem('token');

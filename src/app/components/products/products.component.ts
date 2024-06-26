@@ -19,6 +19,7 @@ export class ProductsComponent implements OnInit {
   products: Product[] = [];
   filteredProducts: Product[] = [];
   filtro: string = '';
+  shopId?: number;
   id!: number;
   sub: any;
 
@@ -29,13 +30,27 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     // Carica i prodotti all'inizializzazione
-    this.sub = this.route.params.subscribe((params) => {
-      this.id = +params['id'];
-      this.productService.getProductsByShopId(this.id).subscribe((data) => {
+
+    this.shopId = +this.route.snapshot.parent?.params['id'];
+    // usa l'operatore "!" per indicare a TS che il valore non sarà null
+
+    if (this.shopId != null) {
+      this.productService.getProductsByShopId(this.shopId).subscribe((data) => {
+        console.log(data);
         this.products = data;
         this.filteredProducts = data;
       });
-    });
+    } else {
+      console.error('Shop ID non trovato');
+    }
+
+    // this.sub = this.route.params.subscribe((params) => {
+    //   this.id = +params['id'];
+    //   this.productService.getProductsByShopId(this.id).subscribe((data) => {
+    //     this.products = data;
+    //     this.filteredProducts = data;
+    //   });
+    // });
 
     this.productService.search$.subscribe((term) => {
       this.filteredProducts = this.products.filter((product) =>
