@@ -1,14 +1,18 @@
 .example-card {
-    max-width: 300px;
-    min-height: 250px;
-    margin: 20px;
-  }
-  
-  .example-header-image {
-    background-image: url('https://as1.ftcdn.net/v2/jpg/03/16/30/30/1000_F_316303014_qzT0VBwBMuIDOzTjEpvcuKvIoEo0Yz1E.jpg');
-    background-size: cover;
-  }
-  
-  .white{
-    color: whitesmoke;
-  }
+  max-width: 300px;
+  min-height: 250px;
+  margin: 20px;
+}
+
+.example-header-image {
+  background-image: url("https://as1.ftcdn.net/v2/jpg/03/16/30/30/1000_F_316303014_qzT0VBwBMuIDOzTjEpvcuKvIoEo0Yz1E.jpg");
+  background-size: cover;
+}
+
+.white {
+  color: whitesmoke;
+}
+
+.product-item-card {
+  height: 405px;
+}

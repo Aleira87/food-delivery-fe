@@ -1,16 +1,18 @@
 <div class="container" class="text-center py-4">
-    <input
-      type="text"
-      placeholder="Cerca (ProductsComponent)"
-      [(ngModel)]="filtro"
-      class="w-75"
-    />
-    <div class="grid">
-      @for (shop of filteredShops; track $index) {
-      <div *ngIf="shop.denominazione.toLocaleLowerCase().includes(filtro)">
-        <app-shop [shop] = "shop" (myEvent)="handleEvent($event)"></app-shop>
-      </div>
-      }
+  <input
+    type="text"
+    placeholder="Cerca (ProductsComponent)"
+    [(ngModel)]="filtro"
+    class="w-75"
+  />
+  <div class="row">
+    @for (shop of filteredShops; track $index) {
+    <div
+      *ngIf="shop.denominazione.toLocaleLowerCase().includes(filtro)"
+      class="col-3 mt-4 mb-4"
+    >
+      <app-shop [shop]="shop" (myEvent)="handleEvent($event)"></app-shop>
     </div>
+    }
   </div>
-  
+</div>

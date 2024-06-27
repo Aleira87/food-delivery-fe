@@ -5,9 +5,12 @@
     [(ngModel)]="filtro"
     class="w-75"
   />
-  <div class="grid">
+  <div class="row">
     @for (product of filteredProducts; track $index) {
-    <div *ngIf="product.name.toLocaleLowerCase().includes(filtro)">
+    <div
+      *ngIf="product.name.toLocaleLowerCase().includes(filtro)"
+      class="col-3 mt-4 mb-4"
+    >
       <app-product
         [product]="product"
         (myEvent)="handleEvent($event)"

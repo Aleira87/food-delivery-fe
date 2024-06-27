@@ -27,8 +27,8 @@
   </mat-card>
 </a> -->
 
-<div [routerLink]="['/product-details', product.id]" class="grid">
-  <div class="card" style="width: 18rem">
+<div [routerLink]="['/product-details', product.id]">
+  <div class="card product-item-card" style="width: 18rem">
     <img
       src="{{ product.img_url }}"
       class="card-img-top"
@@ -38,7 +38,11 @@
       <h5 class="card-title">{{ product.name | titlecase }}</h5>
       <p class="card-text">{{ product.description }}</p>
       <p class="card-text">{{ product.price | currency : "EUR" }}</p>
-      <a href="#" class="btn btn-primary" (click)="emitEvent()">Go somewhere</a>
+    </div>
+    <div class="card-footer">
+      <a href="#" class="btn btn-primary" (click)="emitEvent()"
+        >Aggiungi al carrello</a
+      >
     </div>
   </div>
 </div>

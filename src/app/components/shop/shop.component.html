@@ -20,13 +20,13 @@
   </mat-card-actions>
 </mat-card> -->
 
-<a [routerLink]="['/shop-details', shop.id, 'products']">
+<div [routerLink]="['/shop-details', shop.id, 'products']">
   <div class="card" style="width: 18rem">
-    <div class="card-body">
+    <div class="card-body shop-item-card">
       <h5 class="card-title">{{ shop.denominazione }}</h5>
       <h6 class="card-subtitle mb-2 text-muted">{{ shop.indirizzo }}</h6>
       <p class="card-text">Cinappi SRL</p>
       <a href="#" class="btn btn-primary">Ordina</a>
     </div>
   </div>
-</a>
+</div>
