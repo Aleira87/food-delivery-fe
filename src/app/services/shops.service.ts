@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Product } from '../interfaces/product';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Shop } from '../interfaces/shop';
 
@@ -13,8 +12,8 @@ export class ShopsService {
   private searchSubject = new BehaviorSubject<string>('');
   search$ = this.searchSubject.asObservable();
 
-  //private url = 'https://food-delivery-be-chi.vercel.app';
-  private url = 'http://localhost:3000';
+  private url = 'https://food-delivery-be-chi.vercel.app';
+  // private url = 'http://localhost:3000';
 
   getShops(): Observable<Shop[]> {
     return this.http.get<Shop[]>(this.url + '/shops');
@@ -24,8 +23,8 @@ export class ShopsService {
     return this.http.get<Shop[]>(this.url + '/shops/' + city);
   }
 
-  getShopById(id: number): Observable<Shop[]> {
-    return this.http.get<Shop[]>(this.url + '/shops/' + id);
+  getShopById(id: number): Observable<Shop> {
+    return this.http.get<Shop>(this.url + '/shops/' + id);
   }
 
   addShop(shop: Shop) {

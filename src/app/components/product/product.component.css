@@ -12,7 +12,11 @@
 .white {
   color: whitesmoke;
 }
-
+/* 
 .product-item-card {
   height: 405px;
+} */
+.text-danger {
+  font-size: 1.3rem;
+  font-weight: 700;
 }

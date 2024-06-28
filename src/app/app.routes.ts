@@ -7,6 +7,7 @@ import { ShopsComponent } from './components/shops/shops.component';
 import { LoginComponent } from './components/login/login.component';
 import { ShopDetailsComponent } from './components/shop-details/shop-details.component';
 import { authGuard } from './guards/auth.guard';
+import { CartComponent } from './components/cart/cart.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,6 +24,7 @@ export const routes: Routes = [
   { path: 'shops', component: ShopsComponent },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: 'cart', component: CartComponent },
   {
     path: 'shop-details/:id',
     component: ShopDetailsComponent,
