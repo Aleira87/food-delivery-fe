@@ -12,8 +12,8 @@ export class ShopsService {
   private searchSubject = new BehaviorSubject<string>('');
   search$ = this.searchSubject.asObservable();
 
-  private url = 'https://food-delivery-be-chi.vercel.app';
-  // private url = 'http://localhost:3000';
+  // private url = 'https://food-delivery-be-chi.vercel.app';
+  private url = 'http://localhost:3000';
 
   getShops(): Observable<Shop[]> {
     return this.http.get<Shop[]>(this.url + '/shops');

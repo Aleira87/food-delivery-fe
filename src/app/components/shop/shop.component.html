@@ -1,25 +1,4 @@
-<!-- <mat-card class="example-card">
-  <a [routerLink]="['/shop-details', shop.id, 'products']">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title class="white">
-        {{ shop.denominazione }}
-      </mat-card-title>
-      <mat-card-subtitle class="pb-2">{{ shop.citta }} </mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src={{product.img_url}} alt="Photo of a Shiba Inu">
-    <mat-card-content [style.flexGrow]="1">
-      <p class="description white">
-        {{ shop.indirizzo }}
-      </p>
-    </mat-card-content>
-  </a>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions>
-</mat-card> -->
-
+<!-- 
 <div [routerLink]="['/shop-details', shop.id, 'products']" class="container">
   <div class="card" style="width: 15rem">
     <div class="card-body shop-item-card">
@@ -27,7 +6,29 @@
       <h6 class="card-subtitle mb-2 text-muted">
         {{ shop.indirizzo | titlecase }}
       </h6>
-      <!-- <a href="#" class="btn btn-primary">Ordina</a> -->
+      <a href="#" class="btn btn-primary">Ordina</a>
+    </div>
+  </div>
+</div> -->
+
+<div [routerLink]="['/shop-details', shop.id, 'products']" class="container">
+  <div class="card shadow-sm rounded over" style="width: 18rem">
+    <img
+      src="{{ shop.img_url }}"
+      class="card-img-top"
+      alt="{{ shop.denominazione }}"
+    />
+    <div class="top-right text-bg-danger fs-6 p-2">Top Right</div>
+    <div class="card-body">
+      <h5 class="card-title text-start">
+        {{ shop.denominazione | titlecase }}
+      </h5>
+      <p class="card-text text-start">{{ shop.indirizzo | titlecase }}</p>
+      <p class="card-text text-info h5 text-start">
+        <i class="bi bi-star-fill"></i> {{ shop.rating }}
+        {{ shop.rating | ratingpipe }}
+      </p>
+      <a href="#" class="btn btn-primary">Ordina</a>
     </div>
   </div>
 </div>
