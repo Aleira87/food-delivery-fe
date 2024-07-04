@@ -21,13 +21,13 @@
 </mat-card> -->
 
 <div [routerLink]="['/shop-details', shop.id, 'products']" class="container">
-  <div class="card" style="width: 18rem">
+  <div class="card" style="width: 15rem">
     <div class="card-body shop-item-card">
       <h5 class="card-title">{{ shop.denominazione | titlecase }}</h5>
       <h6 class="card-subtitle mb-2 text-muted">
         {{ shop.indirizzo | titlecase }}
       </h6>
-      <a href="#" class="btn btn-primary">Ordina</a>
+      <!-- <a href="#" class="btn btn-primary">Ordina</a> -->
     </div>
   </div>
 </div>

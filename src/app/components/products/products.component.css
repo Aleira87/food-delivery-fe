@@ -1,6 +1,11 @@
-.grid{
-    display: grid;
-    /* grid-template-columns:  auto, auto, auto, auto; */
-    grid-template-columns: repeat(4, 25%);
-    padding: 30px;
+.grid {
+  display: grid;
+  /* grid-template-columns:  auto, auto, auto, auto; */
+  grid-template-columns: repeat(4, 25%);
+  padding: 30px;
+}
+
+div {
+  font-weight: 700;
+  font-family: "Quicksand", sans-serif;
 }

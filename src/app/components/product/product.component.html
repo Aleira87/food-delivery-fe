@@ -27,30 +27,28 @@
   </mat-card>
 </a> -->
 
-<div [routerLink]="['/product-details', product.id]">
-  <div
-    class="card product-item-card mb-3"
-    style="max-width: 540px; min-height: 150px; max-height: 594px"
-  >
-    <div class="row no-gutters">
-      <div class="col-md-6 p-4">
-        <img
-          src="{{ product.img_url }}"
-          class="card-img"
-          alt="{{ product.name }}"
-        />
-      </div>
-      <div class="col-md-6">
-        <div class="card-body">
-          <h5 class="card-title">{{ product.name | titlecase }}</h5>
-          <p class="card-text">{{ product.description }}</p>
-          <p class="card-text text-danger">
-            {{ product.price | currency : "EUR" }}
-          </p>
-          <button href="#" class="btn btn-primary" (click)="emitEvent()">
-            Aggiungi al carrello
-          </button>
-        </div>
+<div
+  class="card product-item-card mb-3"
+  style="max-width: 540px; min-height: 150px; max-height: 594px"
+>
+  <div class="row no-gutters">
+    <div class="col-md-6 p-4">
+      <img
+        src="{{ product.img_url }}"
+        class="card-img"
+        alt="{{ product.name }}"
+      />
+    </div>
+    <div class="col-md-6">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.name | titlecase }}</h5>
+        <p class="card-text">{{ product.description }}</p>
+        <p class="card-text text-danger">
+          {{ product.price | currency : "EUR" }}
+        </p>
+        <button type="button" class="btn btn-primary" (click)="addToCart()">
+          Aggiungi al carrello
+        </button>
       </div>
     </div>
   </div>

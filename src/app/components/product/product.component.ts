@@ -1,3 +1,4 @@
+import { CartService } from './../../services/cart.service';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -15,8 +16,15 @@ import { CommonModule } from '@angular/common';
 export class ProductComponent {
   @Input() product!: Product;
   @Output() myEvent = new EventEmitter<string>();
+  products = 'products';
+
+  constructor(private cartService: CartService) {}
 
   emitEvent() {
     this.myEvent.emit(this.product.name);
+  }
+
+  addToCart() {
+    this.cartService.addToCart(this.product);
   }
 }

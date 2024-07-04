@@ -14,17 +14,13 @@ export const routes: Routes = [
   { path: 'about', component: AboutComponent },
   {
     path: 'dashboard',
-    loadComponent: () =>
-      import('./components/dashboard/dashboard.component').then(
-        (m) => m.DashboardComponent
-      ),
-    // component: DashboardComponent,
+    component: DashboardComponent,
     canActivate: [authGuard],
   },
   { path: 'shops', component: ShopsComponent },
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: 'cart', component: CartComponent },
+  { path: '', redirectTo: '/', pathMatch: 'full' },
   {
     path: 'shop-details/:id',
     component: ShopDetailsComponent,
