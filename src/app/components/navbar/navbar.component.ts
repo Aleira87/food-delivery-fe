@@ -13,6 +13,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavbarComponent implements OnInit {
   token: string | null = '';
+  isOpen: boolean = false;
 
   constructor(
     private productService: ProductsService,
@@ -23,7 +24,7 @@ export class NavbarComponent implements OnInit {
     this.authService.token$.subscribe((token: any) => {
       this.token = token;
       console.log('Token changed:', this.token); // Aggiungi questo per il debug
-    })
+    });
   }
 
   logout() {
@@ -34,5 +35,10 @@ export class NavbarComponent implements OnInit {
     const input = event.target as HTMLInputElement;
     this.productService.updateSearchTerm(input.value);
     console.log(input.value);
+  }
+
+  toggleMenu() {
+    this.isOpen = !this.isOpen;
+    console.log(this.isOpen);
   }
 }
