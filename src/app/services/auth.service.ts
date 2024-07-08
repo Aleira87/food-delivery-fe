@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private url = 'https://food-delivery-be-chi.vercel.app/';
+  private url = environment.apiUrl;
 
   private tokenSubject: BehaviorSubject<string | null>;
   public token$: Observable<string | null>;
