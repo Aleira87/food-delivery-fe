@@ -15,12 +15,12 @@
                   >
                     <h1 class="fw-bold mb-0">Shopping Cart</h1>
                     <h6 class="mb-0 text-muted">
-                      {{ CartItems.length }} items
+                      {{ cartItems.length }} items
                     </h6>
                   </div>
 
                   <hr class="my-4" />
-                  @for (item of CartItems; track $index) {
+                  @for (item of cartItems; track $index) {
 
                   <div
                     class="row mb-4 d-flex justify-content-between align-items-center"
@@ -206,8 +206,8 @@
                   <hr class="my-4" />
 
                   <div class="d-flex justify-content-between mb-4">
-                    <h5 class="text-uppercase">items {{ CartItems.length }}</h5>
-                    <h5>€ 132.00</h5>
+                    <h5 class="text-uppercase">items {{ cartItems.length }}</h5>
+                    <h5>{{ totalCartPrice() | currency : "EUR" }}</h5>
                   </div>
 
                   <h5 class="text-uppercase mb-3">Shipping</h5>
@@ -240,7 +240,7 @@
 
                   <div class="d-flex justify-content-between mb-5">
                     <h5 class="text-uppercase">Total price</h5>
-                    <h5>€ 137.00</h5>
+                    <h5>{{ totalCartPrice() | currency : "EUR" }}</h5>
                   </div>
 
                   <button

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { CartService } from './../../services/cart.service';
+import { Component, computed, OnInit, effect } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { NgIf } from '@angular/common';
@@ -14,11 +15,20 @@ import { AuthService } from '../../services/auth.service';
 export class NavbarComponent implements OnInit {
   token: string | null = '';
   isOpen: boolean = false;
+  cartCount: number = 0;
 
   constructor(
     private productService: ProductsService,
-    private authService: AuthService
-  ) {}
+    private authService: AuthService,
+    private cartService: CartService
+  ) {
+    effect(() => {
+      this.cartCount = this.cartService.getCartItems().reduce((count, item) => {
+        return count + item.quantity;
+      }, 0);
+      console.log('effect cartCount', this.cartCount);
+    });
+  }
 
   ngOnInit() {
     this.authService.token$.subscribe((token: any) => {

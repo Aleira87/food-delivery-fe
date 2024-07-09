@@ -1,5 +1,10 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light px-2">
-  <a class="navbar-brand" href="#">MyApp</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-warning text-dark px-2">
+  <a
+    class="navbar-brand"
+    style="color: rgb(243, 81, 18); text-shadow: 3px 3px 15px whitesmoke"
+    href="#"
+    >Click&Mangia</a
+  >
   <button
     (click)="toggleMenu()"
     class="navbar-toggler"
@@ -55,8 +60,17 @@
           ><i
             class="bi bi-cart4"
             style="padding: 0; margin: 0; font-size: 1.5em"
-          ></i
-        ></a>
+          >
+          </i>
+          @if (cartCount) {
+          <span
+            class="position-absolute top-50 translate-middle badge rounded-pill bg-danger"
+            style="margin-left: 0.01%; margin-top: -0.85%"
+          >
+            {{ cartCount }}
+          </span>
+          }
+        </a>
       </li>
     </ul>
   </div>

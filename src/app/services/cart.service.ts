@@ -13,24 +13,34 @@ export class CartService {
     return this.#cartItemsSignal();
   }
 
+  getCartItems() {
+    return this.#cartItemsSignal();
+  }
+
   addToCart(product: Product) {
-    console.log(product);
+    console.log('addToCart ', product);
+
     const existingItem = this.#cartItemsSignal().find(
       (item) => item.product.id === product.id
     );
+
     if (existingItem) {
-      existingItem.quantity += 1;
+      // creo un nuovo array con quantity aggiornato ove existingItem id === product.id
+      let newItems: CartItem[] = this.CartItems.map((item) => {
+        if (item.product.id === existingItem.product.id) {
+          item.quantity++;
+        }
+        return item;
+      });
+      // richiamo il signal con update() del nuovo array
+      this.#cartItemsSignal.update(() => newItems);
     } else {
       this.#cartItemsSignal.update((CartItems) => [
         ...CartItems,
         { product, quantity: 1 },
       ]);
     }
-    console.log(this.#cartItemsSignal());
-  }
-
-  getCartItems() {
-    return this.#cartItemsSignal();
+    console.log('CartItems ', this.#cartItemsSignal());
   }
 
   constructor() {}
