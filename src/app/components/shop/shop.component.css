@@ -1,10 +1,10 @@
-.example-card {
+/* .example-card {
   max-width: 300px;
   min-height: auto;
   margin: 20px;
   display: flex;
   flex-direction: column;
-}
+} */
 
 .example-header-image {
   background-image: url("https://as1.ftcdn.net/v2/jpg/03/16/30/30/1000_F_316303014_qzT0VBwBMuIDOzTjEpvcuKvIoEo0Yz1E.jpg");

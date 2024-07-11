@@ -2,3 +2,7 @@ div {
   font-weight: 700;
   font-family: "Quicksand", sans-serif;
 }
+
+img {
+  max-height: 250px;
+}

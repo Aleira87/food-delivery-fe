@@ -1,17 +1,22 @@
-.grid{
-    display: grid;
-    padding: 30px;
+.grid {
+  display: grid;
+  padding: 30px;
+}
+
+div.input-group {
+  padding: 30px;
 }
 
 @media (min-width: 600px) {
-    /* grid-template-columns:  auto, auto, auto, auto; */
-    .grid { grid-template-columns: repeat(2, 1fr); }
+  /* grid-template-columns:  auto, auto, auto, auto; */
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 900px) {
-    .grid { 
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        /* grid-template-columns: repeat(4, 1fr);  */
-    }
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* grid-template-columns: repeat(4, 1fr);  */
   }
-
+}

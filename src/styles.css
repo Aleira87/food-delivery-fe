@@ -6,8 +6,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
 :root {
   --cem-body-bg: #1e90ff;
 }
+/* 
+body {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+} */
 
 body {
-  /* --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important; */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

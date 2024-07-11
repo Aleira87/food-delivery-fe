@@ -13,10 +13,8 @@
                   <div
                     class="d-flex justify-content-between align-items-center mb-5"
                   >
-                    <h1 class="fw-bold mb-0">Shopping Cart</h1>
-                    <h6 class="mb-0 text-muted">
-                      {{ cartItems.length }} items
-                    </h6>
+                    <h1 class="fw-bold mb-0">Carrello</h1>
+                    <h6 class="mb-0 text-muted">{{ cartCount }} Ordini</h6>
                   </div>
 
                   <hr class="my-4" />
@@ -45,7 +43,7 @@
                         class="btn btn-link px-2"
                         onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                       >
-                        <i class="fas fa-minus"></i>
+                        <i class="bi bi-dash-circle"></i>
                       </button>
 
                       <input
@@ -63,12 +61,14 @@
                         class="btn btn-link px-2"
                         onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                       >
-                        <i class="fas fa-plus"></i>
+                        <i class="bi bi-plus-circle"></i>
                       </button>
                     </div>
                     <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                       <h6 class="mb-0">
-                        {{ item.product.price | currency : "EUR" }}
+                        {{
+                          item.product.price * item.quantity | currency : "EUR"
+                        }}
                       </h6>
                     </div>
                     <div class="col-md-1 col-lg-1 col-xl-1 text-end">
@@ -81,120 +81,15 @@
                   <hr class="my-4" />
                   }
 
-                  <!-- 
-                  <div
-                    class="row mb-4 d-flex justify-content-between align-items-center"
-                  >
-                    <div class="col-md-2 col-lg-2 col-xl-2">
-                      <img
-                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img6.webp"
-                        class="img-fluid rounded-3"
-                        alt="Cotton T-shirt"
-                      />
-                    </div>
-                    <div class="col-md-3 col-lg-3 col-xl-3">
-                      <h6 class="text-muted">Shirt</h6>
-                      <h6 class="mb-0">Cotton T-shirt</h6>
-                    </div>
-                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                      <button
-                        data-mdb-button-init
-                        data-mdb-ripple-init
-                        class="btn btn-link px-2"
-                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                      >
-                        <i class="fas fa-minus"></i>
-                      </button>
-
-                      <input
-                        id="form1"
-                        min="0"
-                        name="quantity"
-                        value="1"
-                        type="number"
-                        class="form-control form-control-sm"
-                      />
-
-                      <button
-                        data-mdb-button-init
-                        data-mdb-ripple-init
-                        class="btn btn-link px-2"
-                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                      >
-                        <i class="fas fa-plus"></i>
-                      </button>
-                    </div>
-                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                      <h6 class="mb-0">€ 44.00</h6>
-                    </div>
-                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                      <a href="#!" class="text-muted"
-                        ><i class="bi bi-trash3 h3"></i>
-                      </a>
-                    </div>
-                  </div> -->
-
-                  <!-- <hr class="my-4" /> -->
-
-                  <!-- <div
-                    class="row mb-4 d-flex justify-content-between align-items-center"
-                  >
-                    <div class="col-md-2 col-lg-2 col-xl-2">
-                      <img
-                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img7.webp"
-                        class="img-fluid rounded-3"
-                        alt="Cotton T-shirt"
-                      />
-                    </div>
-                    <div class="col-md-3 col-lg-3 col-xl-3">
-                      <h6 class="text-muted">Shirt</h6>
-                      <h6 class="mb-0">Cotton T-shirt</h6>
-                    </div>
-                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                      <button
-                        data-mdb-button-init
-                        data-mdb-ripple-init
-                        class="btn btn-link px-2"
-                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                      >
-                        <i class="fas fa-minus"></i>
-                      </button>
-
-                      <input
-                        id="form1"
-                        min="0"
-                        name="quantity"
-                        value="1"
-                        type="number"
-                        class="form-control form-control-sm"
-                      />
-
-                      <button
-                        data-mdb-button-init
-                        data-mdb-ripple-init
-                        class="btn btn-link px-2"
-                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                      >
-                        <i class="fas fa-plus"></i>
-                      </button>
-                    </div>
-                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                      <h6 class="mb-0">€ 44.00</h6>
-                    </div>
-                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                      <a href="#!" class="text-muted"
-                        ><i class="bi bi-trash3 h3"></i
-                      ></a>
-                    </div>
-                  </div> -->
-
-                  <!-- <hr class="my-4" /> -->
-
                   <div class="pt-5">
                     <h6 class="mb-0">
-                      <a href="#!" class="text-body"
-                        ><i class="fas fa-long-arrow-alt-left me-2"></i>Back to
-                        shop</a
+                      <a
+                        class="nav-link"
+                        routerLink="/shops"
+                        href="#!"
+                        class="text-body"
+                        ><i class="bi bi-arrow-bar-left me-"></i>Torna ai
+                        Ristoranti</a
                       >
                     </h6>
                   </div>
@@ -202,26 +97,28 @@
               </div>
               <div class="col-lg-4 bg-body-tertiary rounded-end-4">
                 <div class="p-5">
-                  <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                  <h3 class="fw-bold mb-5 mt-2 pt-1 text-warning">Summary</h3>
                   <hr class="my-4" />
 
                   <div class="d-flex justify-content-between mb-4">
-                    <h5 class="text-uppercase">items {{ cartItems.length }}</h5>
+                    <h5 class="text-uppercase">Ordini: {{ cartCount }}</h5>
                     <h5>{{ totalCartPrice() | currency : "EUR" }}</h5>
                   </div>
 
-                  <h5 class="text-uppercase mb-3">Shipping</h5>
+                  <h5 class="text-uppercase mb-3">
+                    Spedizione: {{ 2 | currency : "EUR" }}
+                  </h5>
 
-                  <div class="mb-4 pb-2">
+                  <!-- <div class="mb-4 pb-2">
                     <select data-mdb-select-init>
                       <option value="1">Standard-Delivery- €5.00</option>
                       <option value="2">Two</option>
                       <option value="3">Three</option>
                       <option value="4">Four</option>
                     </select>
-                  </div>
+                  </div> -->
 
-                  <h5 class="text-uppercase mb-3">Give code</h5>
+                  <h5 class="text-uppercase mb-3">Codice Coupon</h5>
 
                   <div class="mb-5">
                     <div data-mdb-input-init class="form-outline">
@@ -229,9 +126,10 @@
                         type="text"
                         id="form3Examplea2"
                         class="form-control form-control-lg"
+                        placeholder="Scrivi il codice Coupon"
                       />
                       <label class="form-label" for="form3Examplea2"
-                        >Enter your code</label
+                        >Coupon</label
                       >
                     </div>
                   </div>
@@ -239,18 +137,24 @@
                   <hr class="my-4" />
 
                   <div class="d-flex justify-content-between mb-5">
-                    <h5 class="text-uppercase">Total price</h5>
-                    <h5>{{ totalCartPrice() | currency : "EUR" }}</h5>
+                    <h5 class="text-uppercase">Totale</h5>
+
+                    @if ( totalCartPrice() > 0 ) {
+                    <h5>{{ totalCartPrice() + 2 | currency : "EUR" }}</h5>
+                    } @else {
+                    <h5>{{ 0 | currency : "EUR" }}</h5>
+                    }
                   </div>
 
                   <button
                     type="button"
                     data-mdb-button-init
                     data-mdb-ripple-init
-                    class="btn btn-primary btn-block btn-lg"
+                    class="nav-item btn btn-warning btn-block btn-lg"
+                    routerLink="/login"
                     data-mdb-ripple-color="dark"
                   >
-                    Register
+                    Registrati
                   </button>
                 </div>
               </div>
