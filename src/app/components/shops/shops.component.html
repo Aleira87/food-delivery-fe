@@ -1,36 +1,12 @@
+<app-search-input (searchChange)="onSearchChange($event)"></app-search-input>
 <div class="container" class="text-center py-4">
-  <div class="row">
-    <div class="col-12">
-      <div class="input-group justify-content-center">
-        <div class="form-outline w-75" data-mdb-input-init>
-          <input
-            type="search"
-            id="form1"
-            class="form-control"
-            placeholder="Cerca Ristoranti"
-            [(ngModel)]="filtro"
-          />
-        </div>
-        <button type="button" class="btn btn-warning" data-mdb-ripple-init>
-          <i class="bi bi-search"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- <input
-    type="text"
-    placeholder="Cerca (ProductsComponent)"
-    [(ngModel)]="filtro"
-    class="w-75"
-  /> -->
   <div class="grid">
     @for (shop of filteredShops; track $index) {
     <div
       *ngIf="shop.denominazione.toLocaleLowerCase().includes(filtro)"
       class="col-3 mt-4 mb-4"
     >
-      <app-shop [shop]="shop" (myEvent)="handleEvent($event)"></app-shop>
+      <app-shop [shop]="shop"></app-shop>
     </div>
     }
   </div>

@@ -8,7 +8,6 @@ import { environment } from '../../environments/environment';
 })
 export class AuthService {
   private url = environment.apiUrl;
-
   private tokenSubject: BehaviorSubject<string | null>;
   public token$: Observable<string | null>;
 

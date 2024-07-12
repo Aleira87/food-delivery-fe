@@ -1,0 +1,22 @@
+<div class="container" class="text-center py-4">
+  <div class="row">
+    <div class="col-12">
+      <div class="input-group justify-content-center">
+        <div class="form-outline w-75" data-mdb-input-init>
+          <input
+            type="search"
+            id="form1"
+            [value]="searchTerm()"
+            (input)="updateSearchTerm($event)"
+            class="form-control"
+            placeholder="Cerca Ristoranti"
+            [(ngModel)]="searchTerm"
+          />
+        </div>
+        <button type="button" class="btn btn-warning" data-mdb-ripple-init>
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
