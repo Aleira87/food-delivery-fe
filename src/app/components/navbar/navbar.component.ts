@@ -1,5 +1,5 @@
 import { CartService } from './../../services/cart.service';
-import { Component, computed, OnInit, effect } from '@angular/core';
+import { Component, OnInit, effect } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { NgIf } from '@angular/common';
@@ -22,11 +22,15 @@ export class NavbarComponent implements OnInit {
     private authService: AuthService,
     private cartService: CartService
   ) {
+    // effect(() => {
+    //   this.cartCount = this.cartService.getCartItems().reduce((count, item) => {
+    //     return count + item.quantity;
+    //   }, 0);
+    //   console.log('effect cartCount', this.cartCount);
+    // });
+
     effect(() => {
-      this.cartCount = this.cartService.getCartItems().reduce((count, item) => {
-        return count + item.quantity;
-      }, 0);
-      console.log('effect cartCount', this.cartCount);
+      this.cartCount = this.cartService.cartCount();
     });
   }
 

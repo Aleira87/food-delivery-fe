@@ -1,26 +1,33 @@
 import { CartItem } from './../interfaces/cart-item';
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { Product } from '../interfaces/product';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  #cartItemsSignal = signal<CartItem[]>([]);
+  private cartItemsSignal = signal<CartItem[]>([]);
 
   get CartItems() {
     // return this.#cartItemsSignal.value;
-    return this.#cartItemsSignal();
+    return this.cartItemsSignal();
   }
 
+  cartCount = computed(() => {
+    return this.cartItemsSignal().reduce(
+      (count, item) => count + item.quantity,
+      0
+    );
+  });
+
   getCartItems() {
-    return this.#cartItemsSignal();
+    return this.cartItemsSignal();
   }
 
   addToCart(product: Product) {
     console.log('addToCart ', product);
 
-    const existingItem = this.#cartItemsSignal().find(
+    const existingItem = this.cartItemsSignal().find(
       (item) => item.product.id === product.id
     );
 
@@ -33,14 +40,14 @@ export class CartService {
         return item;
       });
       // richiamo il signal con update() del nuovo array
-      this.#cartItemsSignal.update(() => newItems);
+      this.cartItemsSignal.update(() => newItems);
     } else {
-      this.#cartItemsSignal.update((CartItems) => [
+      this.cartItemsSignal.update((CartItems) => [
         ...CartItems,
         { product, quantity: 1 },
       ]);
     }
-    console.log('CartItems ', this.#cartItemsSignal());
+    console.log('CartItems ', this.cartItemsSignal());
   }
 
   constructor() {}
