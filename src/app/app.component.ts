@@ -5,6 +5,7 @@ import { AboutComponent } from './components/about/about.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ import { FooterComponent } from './components/footer/footer.component';
     DashboardComponent,
     HomeComponent,
     FooterComponent,
+    SideBarComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

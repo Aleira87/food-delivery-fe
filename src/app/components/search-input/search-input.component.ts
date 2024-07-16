@@ -1,11 +1,4 @@
-import {
-  Component,
-  effect,
-  EventEmitter,
-  Output,
-  signal,
-  Signal,
-} from '@angular/core';
+import { Component, effect, EventEmitter, Output, signal } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 
@@ -17,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './search-input.component.css',
 })
 export class SearchInputComponent {
-  searchTerm: Signal<string> = signal('');
+  private searchTerm = signal<string>('');
   @Output() searchChange = new EventEmitter<string>();
 
   constructor() {
@@ -28,6 +21,10 @@ export class SearchInputComponent {
 
   updateSearchTerm(event: Event) {
     const input = event.target as HTMLInputElement;
-    this.searchChange.emit(input.value);
+    this.searchTerm.set(input.value);
+  }
+
+  getSearchTerm(): string {
+    return this.searchTerm();
   }
 }
