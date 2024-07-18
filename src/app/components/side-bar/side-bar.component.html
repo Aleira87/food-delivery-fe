@@ -14,7 +14,7 @@
       aria-label="Close"
     ></button>
   </div>
-  <div class="offcanvas-body px-0">
+  <div class="offcanvas-body px-0" [class.show]="isOpen">
     <ul
       class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start"
       id="menu"
@@ -82,7 +82,7 @@
     <div class="col min-vh-10 py-3">
       <!-- toggler -->
       <button
-        class="btn float-end"
+        class="btn float-start"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvas"
         role="button"
@@ -93,7 +93,6 @@
           data-bs-target="#offcanvas"
         ></i>
       </button>
-      Content..
     </div>
   </div>
 </div>

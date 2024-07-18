@@ -43,7 +43,7 @@
                         data-mdb-button-init
                         data-mdb-ripple-init
                         class="btn btn-link px-2"
-                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                        (click)="decreaseQuantity(item.product.id)"
                       >
                         <i class="bi bi-dash-circle"></i>
                       </button>
@@ -54,6 +54,7 @@
                         name="quantity"
                         value="1"
                         type="number"
+                        [(ngModel)]="item.quantity"
                         class="form-control form-control-sm"
                       />
 
@@ -61,7 +62,7 @@
                         data-mdb-button-init
                         data-mdb-ripple-init
                         class="btn btn-link px-2"
-                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                        (click)="incrementQuantity(item.product.id)"
                       >
                         <i class="bi bi-plus-circle"></i>
                       </button>
@@ -74,7 +75,9 @@
                       </h6>
                     </div>
                     <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                      <a href="#!" class="text-muted"
+                      <a
+                        class="text-muted"
+                        (click)="removeFromCart(item.product.id)"
                         ><i class="bi bi-trash3 h3"></i>
                       </a>
                     </div>
@@ -104,7 +107,7 @@
 
                   <div class="d-flex justify-content-between mb-4">
                     <h5 class="text-uppercase">Ordini: {{ cartCount }}</h5>
-                    <h5>{{ totalCartPrice() | currency : "EUR" }}</h5>
+                    <h5>{{ cartProductsTotal | currency : "EUR" }}</h5>
                   </div>
 
                   <h5 class="text-uppercase mb-3">
@@ -141,8 +144,8 @@
                   <div class="d-flex justify-content-between mb-5">
                     <h5 class="text-uppercase">Totale</h5>
 
-                    @if ( totalCartPrice() > 0 ) {
-                    <h5>{{ totalCartPrice() + 2 | currency : "EUR" }}</h5>
+                    @if ( cartProductsTotal > 0 ) {
+                    <h5>{{ cartProductsTotal + 2 | currency : "EUR" }}</h5>
                     } @else {
                     <h5>{{ 0 | currency : "EUR" }}</h5>
                     }

@@ -36,3 +36,12 @@ a {
 .over {
   position: relative;
 }
+
+div.card {
+  min-height: 22rem;
+  max-height: 22rem;
+}
+
+div.card:hover {
+  filter: brightness(1.05) drop-shadow(0 0 10px var(--bs-primary)) opacity(0.8);
+}

@@ -20,6 +20,20 @@ export class CartService {
     );
   });
 
+  cartProductTotal = computed(() => {
+    return this.cartItemsSignal().reduce(
+      (total, item) => total + item.product.price * item.quantity,
+      0
+    );
+  });
+
+  cartProductsTotal = computed(() => {
+    return this.cartItemsSignal().reduce(
+      (total, item) => total + item.product.price * item.quantity,
+      0
+    );
+  });
+
   getCartItems() {
     return this.cartItemsSignal();
   }
@@ -48,6 +62,38 @@ export class CartService {
       ]);
     }
     console.log('CartItems ', this.cartItemsSignal());
+  }
+
+  incrementQuantity(productId: number) {
+    this.cartItemsSignal.update((cartItems) =>
+      cartItems.map((item) =>
+        item.product.id === productId
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      )
+    );
+  }
+
+  decreaseQuantity(productId: number) {
+    this.cartItemsSignal.update((cartItems) =>
+      cartItems.map((item) => {
+        if (item.quantity > 0) {
+          return item.product.id === productId
+            ? { ...item, quantity: item.quantity - 1 }
+            : item;
+        } else {
+          return item;
+        }
+      })
+    );
+  }
+
+  removeFromCart(productId: number) {
+    let index = this.cartItemsSignal().findIndex(
+      (item: any) => item.product.id === productId
+    );
+    this.cartItemsSignal().splice(index, 1);
+    this.cartItemsSignal.update((cartItems) => [...cartItems]);
   }
 
   constructor() {}
